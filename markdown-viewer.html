@@ -3,57 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moje zápisky</title>
+    <title>Čtení článku</title>
+    
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
     <style>
+        /* Styl inspirovaný Obsidianem (Light mode) */
+        :root {
+            --bg-body: #f4f5f8;
+            --bg-content: #ffffff;
+            --text-main: #2e3338;
+            --text-muted: #5c6e74;
+            --accent: #7852ee;
+            --code-bg: #f6f8fa;
+            --border: #e2e8f0;
+        }
+
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .top-nav {
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .nav-link:hover { color: var(--accent); }
+
+        /* Kontejner článku */
+        .article-container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px;
-            background-color: #f9f9f9;
+            background: var(--bg-content);
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid var(--border);
         }
-        .nav-link {
-            display: inline-block;
+
+        /* Dynamický nadpis generovaný ze jména souboru */
+        #article-title {
+            margin-top: 0;
+            font-size: 2.5rem;
+            border-bottom: 2px solid var(--code-bg);
+            padding-bottom: 10px;
             margin-bottom: 30px;
-            color: #2c5364;
-            text-decoration: none;
-            font-weight: bold;
         }
-        .nav-link:hover { text-decoration: underline; }
+
+        /* Vzhled Markdown elementů */
+        #markdown-body code {
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+            background-color: var(--code-bg);
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
         
-        /* Box pro samotný obsah markdownu */
-        #content {
-            background: white;
-            padding: 30px;
+        #markdown-body pre {
+            background-color: var(--code-bg);
+            padding: 15px;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        #markdown-body pre code {
+            padding: 0;
+            background-color: transparent;
+        }
+
+        #markdown-body blockquote {
+            border-left: 4px solid var(--accent);
+            margin: 0;
+            padding-left: 20px;
+            color: var(--text-muted);
         }
     </style>
 </head>
 <body>
-    <a href="index.html" class="nav-link">&larr; Zpět na úvod</a>
+    <div class="top-nav">
+        <a href="index.html" class="nav-link">&larr; Zpět na úvod</a>
+    </div>
     
-    <div id="content">
-        <em>Načítám obsah...</em>
+    <div class="article-container">
+        <h1 id="article-title">Načítám...</h1>
+        <div id="markdown-body">
+            <em>Zpracovávám obsah článku...</em>
+        </div>
     </div>
 
     <script>
-        // "Otevření a přečtení souboru" v JavaScriptu
-        fetch('obsah.md')
-            .then(response => {
-                if (!response.ok) throw new Error("Soubor nebyl nalezen");
-                return response.text();
-            })
-            .then(text => {
-                // Přeložíme markdown text na HTML a vložíme do divu
-                document.getElementById('content').innerHTML = marked.parse(text);
-            })
-            .catch(error => {
-                document.getElementById('content').innerHTML = '<p style="color: red;">Chyba: Nepodařilo se načíst Markdown soubor. Ujisti se, že soubor "obsah.md" existuje.</p>';
-            });
+        // 1. Získání parametru z URL (např. ?file=clanek1)
+        const urlParams = new URLSearchParams(window.location.search);
+        const fileParam = urlParams.get('file');
+
+        if (!fileParam) {
+            document.getElementById('article-title').innerText = "Chyba";
+            document.getElementById('markdown-body').innerHTML = "<p>Nebyl zadán žádný článek k zobrazení.</p>";
+        } else {
+            // 2. Úprava názvu souboru na pěkný nadpis (clanek-o-c -> Clanek o c)
+            let formattedTitle = fileParam.replace(/-/g, ' ');
+            formattedTitle = formattedTitle.charAt(0).toUpperCase() + formattedTitle.slice(1);
+            document.getElementById('article-title').innerText = formattedTitle;
+
+            // 3. Cesta k souboru dle tvé vize složek
+            const filePath = `content/${fileParam}.md`;
+
+            // 4. Načtení, překlad a renderování
+            fetch(filePath)
+                .then(response => {
+                    if (!response.ok) throw new Error("Soubor nebyl nalezen na cestě: " + filePath);
+                    return response.text();
+                })
+                .then(text => {
+                    // Překlad Markdownu do HTML
+                    document.getElementById('markdown-body').innerHTML = marked.parse(text);
+                    
+                    // Po vložení HTML řekneme MathJaxu, ať najde a vyrenderuje LaTeX
+                    if (window.MathJax) {
+                        MathJax.typesetPromise([document.getElementById('markdown-body')]).catch(function (err) {
+                            console.error('Chyba při renderování matematiky: ', err.message);
+                        });
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('markdown-body').innerHTML = `<p style="color: red;">${error.message}</p>`;
+                });
+        }
     </script>
 </body>
 </html>

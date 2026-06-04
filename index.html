@@ -14,7 +14,7 @@
             justify-content: center;
             align-items: center;
             background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Tmavý elegantní gradient */
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             color: white;
             overflow: hidden;
         }
@@ -23,50 +23,44 @@
         .container {
             text-align: center;
             opacity: 0; /* Začíná jako neviditelný pro animaci */
-            animation: fadeInFloat 1.5s ease-out forwards;
+            animation: fadeInFloat 1s ease-out forwards;
         }
 
         h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-bottom: 10px;
-            letter-spacing: 2px;
         }
 
         p {
             font-size: 1.2rem;
             color: #d1d5db;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
-        /* Stylování tlačítka (odkazu) */
+        /* Odkazy jako bloky pro články */
+        .article-links { display: flex; gap: 20px; justify-content: center; }
         .btn {
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            color: #fff;
-            text-decoration: none;
-            border: 2px solid #fff;
-            border-radius: 25px;
-            transition: all 0.3s ease;
+            padding: 12px 25px; font-size: 1rem; color: #fff;
+            text-decoration: none; border: 2px solid #fff; border-radius: 8px;
+            transition: all 0.3s ease; background: rgba(255,255,255,0.1);
         }
-
-        .btn:hover {
-            background-color: white;
-            color: #0f2027;
-            box-shadow: 0 0 15px rgba(255,255,255,0.5);
-        }
-
-        /* Samotná animace */
+        .btn:hover { background-color: white; color: #0f2027; transform: translateY(-3px); }
+        
         @keyframes fadeInFloat {
-            0% { opacity: 0; transform: translateY(40px); }
+            0% { opacity: 0; transform: translateY(30px); }
             100% { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Ahoj, světe!</h1>
-        <p>Vítej v mém koutku internetu. Pamatuj, že všechna světla v počítačových hrách svítí na elektřinu.</p>
-        <a href="markdown-viewer.html" class="btn">Zobrazit můj Markdown</a>
+        <h1>Moje Znalostní Báze</h1>
+        <p>Zápisky z Obsidianu přímo na webu.</p>
+        
+        <div class="article-links">
+            <a href="markdown-viewer.html?file=sandbox" class="btn">Článek 1 (Test)</a>
+            <a href="markdown-viewer.html?file=Simpson's paradox" class="btn">Článek 2 (Matematika)</a>
+        </div>
     </div>
 </body>
 </html>
