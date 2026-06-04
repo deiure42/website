@@ -3,68 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Můj první web na GitHub Pages</title>
+    <title>Můj GitHub Web</title>
     <style>
-        /* Tady začíná CSS pro hezčí vzhled */
+        /* Základní reset a nastavení pozadí */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            text-align: center;
             margin: 0;
-            padding: 50px;
-        }
-        .container {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            max-width: 600px;
-            margin: auto;
-        }
-        h1 {
-            color: #0056b3;
-        }
-        img {
-            max-width: 100%;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-        .btn {
-            background-color: #0056b3;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Tmavý elegantní gradient */
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: background-color 0.3s;
+            overflow: hidden;
         }
+
+        /* Kontejner pro obsah s animací */
+        .container {
+            text-align: center;
+            opacity: 0; /* Začíná jako neviditelný pro animaci */
+            animation: fadeInFloat 1.5s ease-out forwards;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #d1d5db;
+            margin-bottom: 40px;
+        }
+
+        /* Stylování tlačítka (odkazu) */
+        .btn {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            color: #fff;
+            text-decoration: none;
+            border: 2px solid #fff;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
         .btn:hover {
-            background-color: #004494;
+            background-color: white;
+            color: #0f2027;
+            box-shadow: 0 0 15px rgba(255,255,255,0.5);
+        }
+
+        /* Samotná animace */
+        @keyframes fadeInFloat {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <h1>Ahoj světe! 🚀</h1>
-        <p>Tohle je můj úplně první web hostovaný přes <strong>GitHub Pages</strong>. Jsem nadšený/á z toho, jak to funguje!</p>
-        
-        <img src="https://picsum.photos/500/300" alt="Náhodný hezký obrázek">
-
-        <br>
-
-        <button class="btn" onclick="pozdrav()">Klikni na mě</button>
+        <h1>Ahoj, světe!</h1>
+        <p>Vítej v mém koutku internetu. Pamatuj, že všechna světla v počítačových hrách svítí na elektřinu.</p>
+        <a href="markdown-viewer.html" class="btn">Zobrazit můj Markdown</a>
     </div>
-
-    <script>
-        /* Tady je kousek JavaScriptu pro interaktivitu */
-        function pozdrav() {
-            alert("Gratuluji! Tvůj první web úspěšně funguje a dokonce umí i JavaScript! 🎉");
-        }
-    </script>
-
 </body>
 </html>
