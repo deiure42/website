@@ -142,11 +142,12 @@
                     document.getElementById('markdown-body').innerHTML = marked.parse(text);
                     
                     // Po vložení HTML řekneme MathJaxu, ať najde a vyrenderuje LaTeX
-                    if (window.MathJax) {
-                        MathJax.typesetPromise([document.getElementById('markdown-body')]).catch(function (err) {
-                            console.error('Chyba při renderování matematiky: ', err.message);
-                        });
-                    }
+                    if (typeof MathJax !== 'undefined' && typeof MathJax.typesetPromise === 'function') {
+						// Fetch byl pomalejší než MathJax -> MathJax je ready, zavoláme ho ručně
+						MathJax.typesetPromise([document.getElementById('markdown-body')]).catch(function (err) {
+							console.error('Chyba při renderování matematiky: ', err.message);
+						});
+					}
                 })
                 .catch(error => {
                     document.getElementById('markdown-body').innerHTML = `<p style="color: red;">${error.message}</p>`;
