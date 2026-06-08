@@ -1,66 +1,62 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web002</title>
-    <style>
-        /* Základní reset a nastavení pozadí */
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Tmavý elegantní gradient */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: white;
-            overflow: hidden;
-        }
-
-        /* Kontejner pro obsah s animací */
-        .container {
-            text-align: center;
-            opacity: 0; /* Začíná jako neviditelný pro animaci */
-            animation: fadeInFloat 1s ease-out forwards;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 1.2rem;
-            color: #d1d5db;
-            margin-bottom: 30px;
-        }
-
-        /* Odkazy jako bloky pro články */
-        .article-links { display: flex; gap: 20px; justify-content: center; }
-        .btn {
-            padding: 12px 25px; font-size: 1rem; color: #fff;
-            text-decoration: none; border: 2px solid #fff; border-radius: 8px;
-            transition: all 0.3s ease; background: rgba(255,255,255,0.1);
-        }
-        .btn:hover { background-color: white; color: #0f2027; transform: translateY(-3px); }
-        
-        @keyframes fadeInFloat {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Web za provozu</title>
+	<link rel="stylesheet" href="assets/css/root.css">
+	<link rel="stylesheet" href="assets/css/index.css">
+	<script src="assets/js/theme.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Moje Znalostní Báze</h1>
-        <p>Zápisky z Obsidianu přímo na webu.</p>
-        
-        <div class="article-links">
-            <a href="markdown-viewer.html?file=sandbox" class="btn">Článek 1 (Test)</a>
-            <a href="markdown-viewer.html?file=Simpson's paradox" class="btn">Článek 2 (Matematika)</a>
-        </div>
-    </div>
+	<button class="theme-toggle" id="themeToggle" title="Přepnout světlý/tmavý režim">🌙</button>
+
+	<header class="landing-container">
+		<h1>Web...</h1>
+		<h3>Náhodný faktík</h3>
+		<p>Všechny zdroje světla v počítačových hrách jsou poháněny elektřinou.</p>
+
+
+
+		<div class="article-links">
+			<a href="#clanky" class="btn">Články a texty</a>
+			<a href="#hry" class="btn">Webové hry</a>
+		</div>
+	</header>
+
+	<div class="step-divider body-to-content">
+		<svg viewBox="0 0 900 600" width="100%" height="100%" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">
+			<path d="M0 73L69 73L69 109L138 109L138 103L208 103L208 43L277 43L277 37L346 37L346 103L415 103L415 25L485 25L485 85L554 85L554 127L623 127L623 49L692 49L692 139L762 139L762 97L831 97L831 31L900 31L900 109L900 0L900 0L831 0L831 0L762 0L762 0L692 0L692 0L623 0L623 0L554 0L554 0L485 0L485 0L415 0L415 0L346 0L346 0L277 0L277 0L208 0L208 0L138 0L138 0L69 0L69 0L0 0Z" class="step-1"></path>
+			<path d="M0 199L69 199L69 283L138 283L138 259L208 259L208 211L277 211L277 139L346 139L346 235L415 235L415 145L485 145L485 181L554 181L554 247L623 247L623 151L692 151L692 289L762 289L762 211L831 211L831 211L900 211L900 193L900 107L900 29L831 29L831 95L762 95L762 137L692 137L692 47L623 47L623 125L554 125L554 83L485 83L485 23L415 23L415 101L346 101L346 35L277 35L277 41L208 41L208 101L138 101L138 107L69 107L69 71L0 71Z" class="step-2"></path>
+			<path d="M0 319L69 319L69 349L138 349L138 349L208 349L208 259L277 259L277 211L346 211L346 319L415 319L415 235L485 235L485 229L554 229L554 349L623 349L623 187L692 187L692 379L762 379L762 289L831 289L831 247L900 247L900 253L900 191L900 209L831 209L831 209L762 209L762 287L692 287L692 149L623 149L623 245L554 245L554 179L485 179L485 143L415 143L415 233L346 233L346 137L277 137L277 209L208 209L208 257L138 257L138 281L69 281L69 197L0 197Z" class="step-3"></path>
+			<path d="M0 361L69 361L69 385L138 385L138 457L208 457L208 439L277 439L277 523L346 523L346 385L415 385L415 295L485 295L485 415L554 415L554 505L623 505L623 331L692 331L692 523L762 523L762 409L831 409L831 409L900 409L900 361L900 251L900 245L831 245L831 287L762 287L762 377L692 377L692 185L623 185L623 347L554 347L554 227L485 227L485 233L415 233L415 317L346 317L346 209L277 209L277 257L208 257L208 347L138 347L138 347L69 347L69 317L0 317Z" class="step-4"></path>
+			<path d="M0 601L69 601L69 601L138 601L138 601L208 601L208 601L277 601L277 601L346 601L346 601L415 601L415 601L485 601L485 601L554 601L554 601L623 601L623 601L692 601L692 601L762 601L762 601L831 601L831 601L900 601L900 601L900 359L900 407L831 407L831 407L762 407L762 521L692 521L692 329L623 329L623 503L554 503L554 413L485 413L485 293L415 293L415 383L346 383L346 521L277 521L277 437L208 437L208 455L138 455L138 383L69 383L69 359L0 359Z" class="step-5"></path>
+		</svg>
+	</div>
+
+	<section id="clanky" class="content-section bg-content">
+		<div class="section-inner">
+			<h2>Články a texty</h2>
+			<a href="markdown-viewer.html?file=sandbox" class="btn">Článek 1 (sandbox)</a>
+			<a href="markdown-viewer.html?file=Simpson's paradox" class="btn">Článek 2 (Simpsonův jev)</a>
+		</div>
+	</section>
+
+	<div class="step-divider content-to-body flipped">
+		<svg viewBox="0 0 900 600" width="100%" height="100%" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">
+			<path d="M0 73L69 73L69 109L138 109L138 103L208 103L208 43L277 43L277 37L346 37L346 103L415 103L415 25L485 25L485 85L554 85L554 127L623 127L623 49L692 49L692 139L762 139L762 97L831 97L831 31L900 31L900 109L900 0L900 0L831 0L831 0L762 0L762 0L692 0L692 0L623 0L623 0L554 0L554 0L485 0L485 0L415 0L415 0L346 0L346 0L277 0L277 0L208 0L208 0L138 0L138 0L69 0L69 0L0 0Z" class="step-1"></path>
+			<path d="M0 199L69 199L69 283L138 283L138 259L208 259L208 211L277 211L277 139L346 139L346 235L415 235L415 145L485 145L485 181L554 181L554 247L623 247L623 151L692 151L692 289L762 289L762 211L831 211L831 211L900 211L900 193L900 107L900 29L831 29L831 95L762 95L762 137L692 137L692 47L623 47L623 125L554 125L554 83L485 83L485 23L415 23L415 101L346 101L346 35L277 35L277 41L208 41L208 101L138 101L138 107L69 107L69 71L0 71Z" class="step-2"></path>
+			<path d="M0 319L69 319L69 349L138 349L138 349L208 349L208 259L277 259L277 211L346 211L346 319L415 319L415 235L485 235L485 229L554 229L554 349L623 349L623 187L692 187L692 379L762 379L762 289L831 289L831 247L900 247L900 253L900 191L900 209L831 209L831 209L762 209L762 287L692 287L692 149L623 149L623 245L554 245L554 179L485 179L485 143L415 143L415 233L346 233L346 137L277 137L277 209L208 209L208 257L138 257L138 281L69 281L69 197L0 197Z" class="step-3"></path>
+			<path d="M0 361L69 361L69 385L138 385L138 457L208 457L208 439L277 439L277 523L346 523L346 385L415 385L415 295L485 295L485 415L554 415L554 505L623 505L623 331L692 331L692 523L762 523L762 409L831 409L831 409L900 409L900 361L900 251L900 245L831 245L831 287L762 287L762 377L692 377L692 185L623 185L623 347L554 347L554 227L485 227L485 233L415 233L415 317L346 317L346 209L277 209L277 257L208 257L208 347L138 347L138 347L69 347L69 317L0 317Z" class="step-4"></path>
+			<path d="M0 601L69 601L69 601L138 601L138 601L208 601L208 601L277 601L277 601L346 601L346 601L415 601L415 601L485 601L485 601L554 601L554 601L623 601L623 601L692 601L692 601L762 601L762 601L831 601L831 601L900 601L900 601L900 359L900 407L831 407L831 407L762 407L762 521L692 521L692 329L623 329L623 503L554 503L554 413L485 413L485 293L415 293L415 383L346 383L346 521L277 521L277 437L208 437L208 455L138 455L138 383L69 383L69 359L0 359Z" class="step-5"></path>
+		</svg>
+	</div>
+
+	<section id="hry" class="content-section bg-body">
+		<div class="section-inner">
+			<h2>Webové hry</h2>
+			<p>Tady budou moje hry...</p>
+		</div>
+	</section>
 </body>
 </html>

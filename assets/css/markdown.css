@@ -1,0 +1,232 @@
+#article-title {
+	margin-top: 0;
+	font-size: 2.5rem;
+	border-bottom: 2px solid var(--code-bg);
+	padding-bottom: 10px;
+	margin-bottom: 30px;
+}
+
+#markdown-body code {
+	font-family: Consolas, Monaco, 'Andale Mono', monospace;
+	background-color: var(--code-bg);
+	padding: 3px 6px;
+	border-radius: 4px;
+	font-size: 0.9em;
+}
+
+#markdown-body pre {
+	background-color: var(--code-bg);
+	padding: 15px;
+	border-radius: 8px;
+	overflow-x: auto;
+	border: 1px solid var(--border);
+}
+
+#markdown-body pre code {
+	padding: 0;
+	background-color: transparent;
+}
+
+#markdown-body blockquote {
+	border-left: 4px solid var(--accent);
+	margin: 0;
+	padding-left: 20px;
+	color: var(--text-muted);
+}
+
+#markdown-body table {
+	border-collapse: collapse;
+	width: 100%;
+	margin-bottom: 25px;
+	font-size: 0.95em;
+	background-color: var(--bg-content);
+}
+
+#markdown-body th, 
+#markdown-body td {
+	border: 1px solid var(--border);
+	padding: 12px 15px;
+}
+
+#markdown-body th {
+	background-color: var(--code-bg);
+	font-weight: 600;
+	color: var(--text-main);
+}
+
+#markdown-body tr:nth-child(even) {
+	background-color: var(--table-even);
+}
+
+#markdown-body tr:hover {
+	background-color: var(--text-main);
+	color: var(--bg-content);
+}
+
+#markdown-body tr:hover td,
+#markdown-body tr:hover td * {
+	color: var(--bg-content) !important;
+}
+
+#markdown-body tr:hover mjx-container {
+	background-color: transparent !important;
+	color: var(--bg-content) !important;
+	transition: all 0.2s ease;
+}
+
+#markdown-body tr:hover code {
+	background-color: rgba(255, 255, 255, 0.15) !important;
+	color: var(--bg-content) !important;
+}
+
+body.dark-mode #markdown-body tr:hover code {
+	background-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+#markdown-body img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 8px;
+	display: block;
+	margin: 30px auto;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode #markdown-body img {
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+	opacity: 0.9;
+}
+
+.internal-link {
+	color: var(--accent);
+	text-decoration: none;
+	font-weight: 500;
+	background-color: rgba(120, 82, 238, 0.05);
+	padding: 2px 4px;
+	border-radius: 4px;
+	transition: background-color 0.2s;
+}
+.internal-link:hover {
+	background-color: rgba(120, 82, 238, 0.15);
+}
+
+.footnote-ref {
+	color: var(--accent);
+	text-decoration: none;
+	font-weight: bold;
+	padding: 0 2px;
+}
+
+.footnote-ref:hover {
+	text-decoration: underline;
+}
+
+.footnote-def {
+	font-size: 0.9em;
+	color: var(--text-muted);
+	border-top: 1px solid var(--border);
+	padding-top: 8px;
+	margin-top: 15px;
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+}
+
+.footnote-backref {
+	color: var(--accent);
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+.footnote-backref:hover {
+	transform: scale(1.1);
+}
+
+#markdown-body blockquote.callout {
+	border-left: none;
+	padding: 0;
+	margin: 25px 0;
+	border-radius: 8px;
+	border: 1px solid var(--border);
+	background-color: transparent;
+	overflow: hidden;
+}
+
+.callout-title {
+	padding: 12px 15px;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .callout-title {
+	background-color: rgba(255, 255, 255, 0.05);
+}
+
+#markdown-body blockquote.callout p {
+	padding: 15px;
+	margin: 0;
+	color: var(--text-main);
+}
+
+.callout-tip { border-color: #059669 !important; }
+.callout-tip .callout-title { background-color: rgba(5, 150, 105, 0.15); color: #059669; }
+
+.callout-warning { border-color: #d97706 !important; }
+.callout-warning .callout-title { background-color: rgba(217, 119, 6, 0.15); color: #d97706; }
+
+.callout-error { border-color: #dc2626 !important; }
+.callout-error .callout-title { background-color: rgba(220, 38, 38, 0.15); color: #dc2626; }
+
+.callout-todo { border-color: #0ea5e9 !important; }
+.callout-todo .callout-title { background-color: rgba(14, 165, 233, 0.15); color: #0ea5e9; }
+
+.callout-quote { border-color: var(--text-muted) !important; }
+.callout-quote .callout-title { background-color: var(--table-even); color: var(--text-muted); }
+
+.code-block-wrapper {
+	position: relative;
+	margin-bottom: 25px;
+}
+
+.code-block-wrapper pre {
+	margin-bottom: 0;
+	padding-top: 35px;
+}
+
+.copy-code-btn {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	background-color: var(--table-even);
+	color: var(--text-muted);
+	border: 1px solid var(--border);
+	border-radius: 4px;
+	padding: 4px 8px;
+	font-size: 0.75em;
+	font-family: Consolas, Monaco, monospace;
+	text-transform: lowercase;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	opacity: 0.8;
+}
+
+.copy-code-btn:hover {
+	opacity: 1;
+	color: var(--accent);
+	border-color: var(--accent);
+	background-color: var(--bg-content);
+}
+
+.copy-code-btn.copied {
+	color: #059669;
+	border-color: #059669;
+	background-color: rgba(5, 150, 105, 0.1);
+}
+
+body.dark-mode .copy-code-btn.copied {
+	color: #34d399;
+	border-color: #34d399;
+}
