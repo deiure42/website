@@ -34,23 +34,33 @@
 }
 
 .btn {
-	padding: 12px 25px; 
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 4px 4px; 
 	font-size: 1rem; 
 	color: var(--text-main);
 	text-decoration: none; 
 	border: 2px solid var(--border); 
 	border-radius: 16px;
-	transition: all 0.3s ease; 
 	background: var(--bg-content);
-	box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+	white-space: nowrap;
+	flex-shrink: 0;
+	transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.3s ease, color 0.3s ease;
+	box-shadow: 0 6px 0 var(--border);
+	transform: translateY(0);
 }
 
 .btn:hover { 
 	background-color: var(--bg-body); 
 	color: var(--accent); 
-	border-color: var(--accent);
 	transform: translateY(-3px); 
-	box-shadow: 0 8px 25px color-mix(in srgb, var(--accent) 30%, transparent);
+	box-shadow: 0 9px 0 var(--border);
+}
+
+.btn:active {
+	transform: translateY(6px);
+	box-shadow: 0 0px 0 var(--border);
 }
 
 @keyframes fadeInFloat {
@@ -58,7 +68,6 @@
 	100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Základní nastavení sekcí */
 .content-section {
 	padding: 80px 20px;
 	min-height: 40vh;
