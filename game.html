@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Moje Hry |</title>
+	<link rel="stylesheet" href="assets/css/root.css">
+	<link rel="stylesheet" href="assets/css/game.css">
+	<script src="assets/js/theme.js" defer></script>
+	</head>
+<body>
+	<button class="theme-toggle" id="themeToggle" title="Přepnout světlý/tmavý režim">🌙</button>
+
+	<nav class="top-nav">
+		<a href="index.html" class="nav-link">&larr; Zpět na hlavní web</a>
+	</nav>
+
+	<main class="article-container game-console">
+
+		<header class="console-header">
+			<div class="console-controls">
+				<a href="index.html" class="btn btn-round" title="Zpět do menu">🏠</a>
+				<button class="btn btn-round" id="btn-pause" title="Pozastavit">⏸️</button>
+				<button class="btn btn-round" id="btn-reload" title="Znovu načíst">🔄</button>
+				<button class="btn btn-round" id="btn-fullscreen" title="Celé okno">🔲</button>
+			</div>
+		</header>
+
+		<section class="game-screen-wrapper">
+			<canvas id="game-canvas" width="800" height="450">
+				Tvůj prohlížeč nepodporuje HTML5 Canvas.
+			</canvas>
+		</section>
+
+	<section class="virtual-keyboard">
+		<div class="keyboard-row">
+			<button class="btn kbd-key key-pressed" data-key="KeyQ">Q</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyW">W</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyE">E</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyR">R</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyT">T</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyY">Y</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyU">U</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyI">I</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyO">O</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyP">P</button>
+		</div>
+
+		<div class="keyboard-row row-offset-1">
+			<button class="btn kbd-key key-pressed" data-key="KeyA">A</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyS">S</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyD">D</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyF">F</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyG">G</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyH">H</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyJ">J</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyK">K</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyL">L</button>
+		</div>
+
+		<div class="keyboard-row row-offset-2">
+			<button class="btn kbd-key key-pressed" data-key="KeyZ">Z</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyX">X</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyC">C</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyV">V</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyB">B</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyN">N</button>
+			<button class="btn kbd-key key-pressed" data-key="KeyM">M</button>
+		</div>
+
+		<div class="keyboard-row row-offset-3">
+			<div class="arrow-block">
+				<div class="arrow-row">
+					<button class="btn kbd-key key-pressed" data-key="ArrowUp">^</button>
+				</div>
+				<div class="arrow-row">
+					<button class="btn kbd-key key-pressed" data-key="ArrowLeft">←</button>
+					<button class="btn kbd-key key-pressed" data-key="ArrowDown">↓</button>
+					<button class="btn kbd-key key-pressed" data-key="ArrowRight">→</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="keyboard-row bottom-row">
+			<button class="btn kbd-key key-pressed key-wide" data-key="Space">Mezerník</button>
+		</div>
+	</section>
+
+		<section class="game-description">
+			<h2></h2>
+			<p></p>
+		</section>
+
+	</main>
+
+<script src="assets/js/game.js" defer></script>
+</body>
+</html>
