@@ -2,7 +2,7 @@
 	if (window.GameInput && window.GameInput.initGame) {
 		window.GameInput.initGame({
 			title: "Tetris",
-			description: "Klasický Tetris s možností odložení kostky.<br><br><strong>Pohyb:</strong> Šipky nebo W, A, S, D<br><strong>Dvojitý skok:</strong> J, K<br><strong>Rotace:</strong> Šipka nahoru / W<br><strong>Hard Drop:</strong> Mezerník / S / Šipka dolů<br><strong>Schovat kostku (Hold):</strong> C<br><strong>Návrat do menu:</strong> Q",
+			description: "Klasický Tetris s možností odložení kostky.<br><br><strong>Pohyb:</strong> Šipky nebo W, A, S, D<br><strong>Dvojitý skok:</strong> J, K<br><strong>Rotace:</strong> Šipka nahoru / W<br><strong>Hard Drop:</strong> Mezerník<br><strong>Soft Drop:</strong> S / Šipka dolů<br><strong>Schovat kostku (Hold):</strong> C<br><strong>Návrat do menu:</strong> Q",
 			
 			// Vypsání kláves, které se na papírové konzoli rozsvítí a půjde na ně klikat myší
 			activeKeys: [
@@ -19,10 +19,11 @@
 	const WIDTH = 10;
 	const HEIGHT = 30;
 	const QUEUE_SIZE = 4;
-	const INITIAL_DELAY = 250;
-	const MIN_DELAY = 50;
+	const INITIAL_DELAY = 800;
+	const MIN_DELAY = 40;
 	const DELAY_REDUCTION = 150;
 	const PLACEMENT_DELAY = 10;
+	const LOCK_TIME = 500;
 
 	// Rozměry pro vykreslování v terminálovém stylu na Canvas (800x450)
 	const BLOCK_SIZE = 13;      // Velikost kostičky v pixelech
@@ -34,6 +35,9 @@
 	const STATE_PLAYING = 'PLAYING';
 	const STATE_GAMEOVER = 'GAMEOVER';
 	const STATE_SAVE_SCORE = 'SAVE_SCORE';
+
+	let fallAccumulator = 0;
+	let lockAccumulator = 0;
 
 	let gameState = STATE_MENU;
 	let board = Array.from({ length: HEIGHT }, () => Array(WIDTH).fill(0));
@@ -107,13 +111,16 @@
 		return false;
 	}
 
-	function generateTetromino() {
+	function generateTetromino(){
 		let index = nextTetrominoes[0];
 		handTetromino = index;
 		copyTetromino(index);
 		currentX = Math.floor(WIDTH / 2) - 1;
 		currentY = 0;
 
+		fallAccumulator = 0;
+		lockAccumulator = 0;
+		k = 0;
 		for (let i = 0; i < QUEUE_SIZE - 1; i++) {
 			nextTetrominoes[i] = nextTobaccoes = nextTetrominoes[i + 1];
 		}
@@ -146,11 +153,6 @@
 	}
 
 	function placeTetromino() {
-		if (k < PLACEMENT_DELAY) {
-			k++;
-			return;
-		}
-
 		for (let i = 0; i < 4; i++) {
 			for (let j = 0; j < 4; j++) {
 				if (currentTetromino[i][j]) {
@@ -158,7 +160,6 @@
 				}
 			}
 		}
-		k = 0;
 		score += 2;
 		clearLines();
 		canSwap = true;
@@ -194,6 +195,8 @@
 
 	function swapTetromino() {
 		if (!canSwap) return;
+		fallAccumulator = 0;
+		lockAccumulator = 0;
 		k = 0;
 		if (storedTetromino === -1) {
 			storedTetromino = handTetromino;
@@ -310,11 +313,12 @@
 
 			// 3. Vykreslení aktivní kostky
 			ctx.fillStyle = currentColor;
-			for (let i = 0; i < 4; i++) {
-				for (let j = 0; j < 4; j++) {
-					if (currentTetromino[i][j]) {
+			let visualOffsetY = (!checkCollision(0, 1)) ? fallAccumulator * BLOCK_SIZE : 0;
+			for(let i = 0; i < 4; i++){
+				for(let j = 0; j < 4; j++){
+					if(currentTetromino[i][j]){
 						let rx = BOARD_X + (currentX + j) * BLOCK_SIZE;
-						let ry = OFFSET_Y + (currentY + i) * BLOCK_SIZE;
+						let ry = OFFSET_Y + (currentY + i) * BLOCK_SIZE + visualOffsetY;
 						ctx.fillRect(rx, ry, BLOCK_SIZE - 1, BLOCK_SIZE - 1);
 					}
 				}
@@ -371,6 +375,8 @@
 		delay = INITIAL_DELAY;
 		storedTetromino = -1;
 		canSwap = true;
+		fallAccumulator = 0;
+		lockAccumulator = 0;
 		k = 0;
 		
 		nextTetrominoes = [];
@@ -455,31 +461,59 @@
 				if (isJustPressed('KeyW') || isJustPressed('ArrowUp')) rotateTetromino();
 				if (isJustPressed('KeyC')) swapTetromino();
 
-				// Hard Drop / Zrychlení pádu (S / Space / Down / Enter)
-				if (isJustPressed('KeyS') || isJustPressed('Space') || isJustPressed('ArrowDown') || isJustPressed('Enter')) {
-					while (!checkCollision(0, 1)) currentY++;
-					k = PLACEMENT_DELAY;
-					placeTetromino();
-					
+				// Hard Drop / Zrychlení pádu (Space / Enter)
+				if(isJustPressed('Space') || isJustPressed('Enter')){
 					let dropDistance = 0;
-					while (!checkCollision(0, dropDistance + 1)) dropDistance++;
+					while(!checkCollision(0, 1)){
+						currentY++;
+						dropDistance++;
+					}
 					score += Math.floor(dropDistance / 2);
+
+					fallAccumulator = 0;
+					lockAccumulator = LOCK_TIME;
 				}
 
 				// Fyzikální krok gravitace (Step timer)
-				if (Date.now() - stepTim >= delay) {
-					if (!checkCollision(0, 1)) {
-						currentY++;
-					} else {
-						placeTetromino();
-					}
+				let now = Date.now();
+				let dt = now - stepTim;
+				stepTim = now;
 
-					// Dynamický delay podle dosaženého skóre
-					let difficultyStage = Math.floor(score / 300);
-					delay = INITIAL_DELAY * Math.pow(0.9, difficultyStage);
-					if (delay < MIN_DELAY) delay = MIN_DELAY;
-					
-					stepTim = Date.now();
+				let isSoftDropping = window.GameInput && (window.GameInput.keys['KeyS'] || window.GameInput.keys['ArrowDown']);
+				let difficultyStage = Math.floor(score / 300);
+				delay = INITIAL_DELAY * Math.pow(0.85, difficultyStage);
+				if(delay < MIN_DELAY) delay = MIN_DELAY;
+
+				if(isSoftDropping){
+					delay = 30;
+				}
+
+				if(!checkCollision(0, 1)){
+					fallAccumulator += dt / delay;
+					lockAccumulator = 0;
+					k = 0;
+
+					while(fallAccumulator >= 1.0){
+						currentY++;
+						fallAccumulator -= 1.0;
+
+						if(isSoftDropping){
+							score += 1;
+						}
+
+						if(checkCollision(0, 1)){
+							fallAccumulator = 0;
+							break;
+						}
+					}
+				}else{
+					fallAccumulator = 0;
+					lockAccumulator += dt;
+					k = Math.min(PLACEMENT_DELAY, Math.floor((lockAccumulator / LOCK_TIME) * PLACEMENT_DELAY));
+					if(lockAccumulator >= LOCK_TIME){
+						placeTetromino();
+						lockAccumulator = 0;
+					}
 				}
 			}
 		}
