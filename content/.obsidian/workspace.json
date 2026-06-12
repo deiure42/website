@@ -6,6 +6,7 @@
       {
         "id": "32f90cf8a4611517",
         "type": "tabs",
+        "dimension": 12.690355329949238,
         "children": [
           {
             "id": "f8756e2abca80ac8",
@@ -22,6 +23,7 @@
       {
         "id": "12613f3a6edc40b5",
         "type": "tabs",
+        "dimension": 87.30964467005076,
         "children": [
           {
             "id": "90bb2b4fb75beb5b",
@@ -36,8 +38,37 @@
               "icon": "lucide-file",
               "title": "Fenomény"
             }
+          },
+          {
+            "id": "84978f5ee334f181",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Simpsonův paradox.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Simpsonův paradox"
+            }
+          },
+          {
+            "id": "dde38a366e502eb8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Myslím tedy jsem.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Myslím tedy jsem"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -199,8 +230,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "90bb2b4fb75beb5b",
+  "active": "dde38a366e502eb8",
   "lastOpenFiles": [
+    "Myslím tedy jsem.md",
+    "Filosofie.md",
     "Simpsonův paradox.md",
     "Fenomény.md",
     "Welcome.md"

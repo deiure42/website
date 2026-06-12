@@ -51,7 +51,9 @@ __Lék A je vždy lepší volbou a bude vždy dávat lepší výsledky.__
 ## Můj názor
 ---
 Je samo o sobě paradoxní, že se Simpsonův jev nejčastěji nazývá Simpsonovým paradoxem. Přitom se jedná jen o relativně zřejmou vlastnost datových skupin a jejich rozdělení, které nevyhnutelně podléhá __matematice vektorů a proložení křivek__. Přesto ale jde o jednu z těch věcí, které se laikům (těm, kdo nejsou sběhlí ve znalosti statistiky) zdá paradoxní.
+
 __Jde snadno vysvětlit a ukázat__ na datech za použití __násobení a sčítání zlomků__. Zároveň směřuje pozornost čtenářů studií a statistik směrem, který laiky nenapadne; ke škálám, na nichž se data měří. Svou jednoduchostí nám může naznačit __část hranic vědy__. V příkladu s léky použitém v článku výše ([[#Příklad|tady]]) je nám všem jasné, jak by se dalo "očistit" data. Co když to ale zřejmé není?
+
 Myslím na historické __reálie eugeniky a jiných vědeckých oborů__, které dnes označujeme za zcestné, ve své době šlo však za legitimní disciplíny jako je pro nás dnes třeba pedagogická psychologie.
 
 Snad nejdůležitější věc, kterou nám __Simpsonův paradox__ ukazuje, je, že někdy na počtu dat prostě nezáleží. Kdyby neexistovalo třídění pacientů na ty s lehkým a těžkým průběhem, vědeckou metodou bychom nijak nezjistili, že je __Lék A__ vůbec někdy efektivnější než __Lék B__.

@@ -6,9 +6,7 @@ window.GameInput = {
     isPaused: false // Globální stav pauzy pro hry
 };
 
-// Funkce, kterou zavolá samotná hra (např. tetris.js), aby si nastavila prostředí
 window.GameInput.initGame = function(config) {
-    // 1. Změna titulku stránky a nadpisu
     document.title = `Moje Hry | ${config.title}`;
     const titleElement = document.querySelector('.game-description h2');
     const descElement = document.querySelector('.game-description p');
@@ -16,7 +14,6 @@ window.GameInput.initGame = function(config) {
     if (titleElement) titleElement.textContent = config.title;
     if (descElement) descElement.innerHTML = config.description;
 
-    // 2. Aktivace specifických kláves
     document.querySelectorAll('.kbd-key').forEach(key => {
         key.classList.remove('key-active');
         key.classList.add('key-pressed');

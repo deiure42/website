@@ -1,29 +1,29 @@
 :root {
-	--bg-body: #e4eef7;
-	--bg-content: #ffffff;
-	--text-main: #0f172a;
-	--text-muted: #5c6e74;
-	--accent: #7852ee;
-	--code-bg: #f6f8fa;
-	--border: #ced5e0;
-	--table-even: #f8f9fa;
-	--table-hover: #f1f3f5;
+    --bg-body: #c9ddec;
+    --bg-content: #eaf2fa;
+    --text-main: #0a192f;
+    --text-muted: #4b637b;
+    --accent: #3b5edd;
+    --code-bg: #dde7f1;
+    --border: #a2b9ce;
+    --table-even: #dfecf7;
+    --table-hover: #caddf0;
+}
+
+body.dark-mode {
+    --bg-body: #060911;
+    --bg-content: #0d121c;
+    --text-main: #c4ceda;
+    --text-muted: #738090;
+    --accent: #606CA6;
+    --code-bg: #04060a;
+    --border: #283140;
+    --table-even: #101520;
+    --table-hover: #1b2333;
 }
 
 html {
     scroll-behavior: smooth;
-}
-
-body.dark-mode {
-	--bg-body: #0a1128;
-	--bg-content: #121e3b;
-	--text-main: #e2e8f0;
-	--text-muted: #94a3b8;
-	--accent: #8b5cf6;
-	--code-bg: #0b0f19;
-	--border: #3d4e66;
-	--table-even: #161e2e;
-	--table-hover: #334155;
 }
 
 body {
