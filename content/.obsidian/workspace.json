@@ -6,7 +6,7 @@
       {
         "id": "32f90cf8a4611517",
         "type": "tabs",
-        "dimension": 12.690355329949238,
+        "dimension": 25.951776649746193,
         "children": [
           {
             "id": "f8756e2abca80ac8",
@@ -23,7 +23,7 @@
       {
         "id": "12613f3a6edc40b5",
         "type": "tabs",
-        "dimension": 87.30964467005076,
+        "dimension": 74.0482233502538,
         "children": [
           {
             "id": "90bb2b4fb75beb5b",
@@ -31,12 +31,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Fenomény.md",
+                "file": "Filosofie.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Fenomény"
+              "title": "Filosofie"
             }
           },
           {
@@ -59,16 +59,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Myslím tedy jsem.md",
-                "mode": "preview",
+                "file": "Myslím, tedy jsem.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Myslím tedy jsem"
+              "title": "Myslím, tedy jsem"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -230,11 +229,12 @@
       "bases:Create new base": false
     }
   },
-  "active": "dde38a366e502eb8",
+  "active": "90bb2b4fb75beb5b",
   "lastOpenFiles": [
-    "Myslím tedy jsem.md",
-    "Filosofie.md",
+    "Myslím, tedy jsem.md",
+    "Toulky filosofií.md",
     "Simpsonův paradox.md",
+    "Filosofie.md",
     "Fenomény.md",
     "Welcome.md"
   ]

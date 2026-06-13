@@ -121,6 +121,11 @@
 
 .arrow-up-row {
 	justify-content: center;
+	margin-left: -24px;
+}
+
+.bottom-arrow-row {
+	margin-left: 24px;
 }
 
 .bottom-row {

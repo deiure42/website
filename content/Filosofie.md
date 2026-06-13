@@ -1,7 +1,8 @@
-V těchto textech postupně vydávám vlastní zpracování a interpretaci některých filosofických myšlenek v souvislosti mezi sebou. Úmyslně nezačínám počátkem filosofie ([[Proč ne začátek|vysvětleno zde]]) a postupného jejího rozvíjení. Nebudu o ní psát jako o vědě věd, protože jednoduše není.
-
-Jako startovní bod všeho jsem zvolil Osvícenství a to konkrétně příběh René Descarta. Je možné, že zpětně některé texty upravím vzhledem k tomu, jak sám budu provádět rešerše.
+V těchto textech postupně vydávám vlastní zpracování a interpretaci některých filosofických myšlenek v jejich vzájemných souvislostech.
 
 ## Toulky filosofií
 ---
-1. [[Myslím tedy jsem]]
+Série Toulky filosofií vás vezme na spletitou cestu. Možná trochu nečekaně nebude začínat na začátku civilizace, ale v době osvícenství ([[Toulky filosofií#Proč nezačít na začátku?|Důvod tady]]). První zpracovávaný autor bude René Descartes, který položil základy vědeckého myšlení naší dnešní civilizace. Nenechte se ale zmást, Toulky nebudou o vědě, budou o filosofii.
+
+0. [[Toulky filosofií|O Toulkách]]
+1. [[Myslím, tedy jsem]]
