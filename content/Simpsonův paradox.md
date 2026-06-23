@@ -1,6 +1,3 @@
-
-## Obsah
----
 1. [[#Popis|Definiční popis]]: Obsahuje výrokově korektní formu popisu, která je vyčerpávající, ale zároveň nemusí být srozumitelná.
 2. [[#Historie|Historie]]: Postupný vývoj pojmu a významu s historickým příkladem.
 3. [[#Příklad|Příklad a vysvětlení]]: Srozumitelná podoba a vysvětlení pojmu, která není vyčerpávající, ale zato vyniká v pochopitelnosti
