@@ -1,10 +1,3 @@
-1. [[#Popis|Definiční popis]]: Obsahuje výrokově korektní formu popisu, která je vyčerpávající, ale zároveň nemusí být srozumitelná.
-2. [[#Historie|Historie]]: Postupný vývoj pojmu a významu s historickým příkladem.
-3. [[#Příklad|Příklad a vysvětlení]]: Srozumitelná podoba a vysvětlení pojmu, která není vyčerpávající, ale zato vyniká v pochopitelnosti
-4. [[#Můj názor|Můj názor]]: Důsledky a myšlenky, které z fenoménu vypichuji.
-5. [[#Zdroje|Zdroje]]
-## Popis
----
 __Simpsonův paradox__ je jev vznikající při porovnávání dvou skupin.
 >Jde o situaci, kdy se určitý trend objevuje v několika různých skupinách dat, ale jakmile se tyto skupiny spojí do jednoho celku, trend zmizí nebo se dokonce zcela obrátí.
 

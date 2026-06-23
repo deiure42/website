@@ -14,9 +14,6 @@
 	4. [[#Mám MacOS|Pro MacOS]]
 	5. [[#Mám Linux|Pro Linux]]
 4. [[#Krátký komentář k budoucnosti baterií v EU|Budoucnost akumulátorů v EU]]
-
-
-[[Praxe]]
 ## Co jsou baterie
 ---
 Baterie jsou elektrochemická zařízení, která slouží k uchovávání elektrické energie. Oproti ostatním způsobům ukládání energie se vyznačují svou malou velikostí. Právě díky tomu je dnes najdeme v kapse téměř každého z nás (v chytrých telefonech), ale i ve spoustě jiných domácích zařízení.

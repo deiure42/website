@@ -158,7 +158,33 @@ body.dark-mode #markdown-body img {
 	font-weight: 600;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	background-color: rgba(0, 0, 0, 0.05);
+	gap: 15px;
+}
+
+.callout-btn {
+    font-size: 0.8em;
+    font-weight: 500;
+    color: inherit; /* Přebírá barvu textu daného calloutu (zelená, červená atd.) */
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid currentColor; /* Jemný rámeček v barvě textu */
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.25);
+    transition: all 0.2s ease-in-out;
+    white-space: nowrap; /* Zabrání zalomení textu tlačítka */
+}
+
+body.dark-mode .callout-btn {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.callout-btn:hover {
+    background-color: var(--accent) !important;
+    color: #ffffff !important;
+    border-color: var(--accent) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 body.dark-mode .callout-title {

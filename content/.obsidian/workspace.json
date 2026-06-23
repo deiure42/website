@@ -59,12 +59,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Filosofie.md",
+                "file": "Fenomény.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Filosofie"
+              "title": "Fenomény"
             }
           }
         ],
@@ -232,15 +232,15 @@
   },
   "active": "48305c3d6076d425",
   "lastOpenFiles": [
-    "Fenomény.md",
-    "Myslím, tedy jsem.md",
     "Praxe.md",
-    "Do života.md",
+    "Myslím, tedy jsem.md",
     "Filosofie.md",
+    "Fenomény.md",
     "Baterie.md",
+    "Simpsonův paradox.md",
+    "Do života.md",
     "Toulky filosofií.md",
     "As long as they keep away from me.md",
-    "Simpsonův paradox.md",
     "Welcome.md"
   ]
 }

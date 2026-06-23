@@ -50,6 +50,12 @@ if (!fileParam) {
 				text = text.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '');
 			}
 
+			const hiddenCodeBlocks = [];
+			text = text.replace(/```[\s\S]*?```|`[^`]+`/g, (match) => {
+				hiddenCodeBlocks.push(match);
+				return `__HIDDEN_CODE_${hiddenCodeBlocks.length - 1}__`;
+			});
+
 			text = text.replace(/ \^([a-zA-Z0-9-]+)(?=\n|$)/gm, '<span id="^$1"></span>');
 
 			text = text.replace(/\!\[\[(.*?)\]\]/g, (match, p1) => {
@@ -106,6 +112,10 @@ if (!fileParam) {
 			text = text.replace(/^\[\^([^\]]+)\]:\s*(.*)$/gm, '<div id="fn-$1" class="footnote-def"><a href="#fnref-$1" class="footnote-backref" title="Zpět na text">↩</a> <span class="footnote-text"><strong>$1:</strong> $2</span></div>');
 			text = text.replace(/\[\^([^\]]+)\](?!:)/g, '<sup id="fnref-$1"><a href="#fn-$1" class="footnote-ref">[$1]</a></sup>');
 
+			hiddenCodeBlocks.forEach((block, index) => {
+				text = text.replace(`__HIDDEN_CODE_${index}__`, () => block);
+			});
+
 			document.getElementById('markdown-body').innerHTML = marked.parse(text);
 
 			const headings = document.querySelectorAll('#markdown-body h1, #markdown-body h2, #markdown-body h3, #markdown-body h4, #markdown-body h5, #markdown-body h6');
@@ -136,16 +146,48 @@ if (!fileParam) {
 				
 				if (match) {
 					const type = match[1].toLowerCase();
-					const title = match[2].trim() || type.charAt(0).toUpperCase() + type.slice(1);
-					
+					let rawTitle = match[2].trim();
+					let btnHref = '';
+					let btnText = 'Číst článek ↗';
+
+					if(rawTitle.includes('|')){
+						const parts = rawTitle.split('|');
+						rawTitle = parts[0].trim();
+						let rawLink = parts[1].trim();
+
+						const tempDiv = document.createElement('div');
+						tempDiv.innerHTML = rawLink;
+						const aTag = tempDiv.querySelector('a');
+
+						if(aTag){
+							btnHref = aTag.getAttribute('href');
+							if(aTag.textContent.trim() !== aTag.getAttribute('href')){
+								btnText = aTag.textContent.trim() + ' ↗';
+							}
+						}else{
+							const target = rawLink.replace(/^\[\[/, '').replace(/\]\]$/, '').trim();
+							const isWebUrl = target.startsWith('http://') || target.startsWith('https://');
+							btnHref = isWebUrl ? target : `markdown-viewer.html?file=${encodeURIComponent(target)}`;
+						}
+					}
+
+					const title = rawTitle || type.charAt(0).toUpperCase() + type.slice(1);
+
 					bq.classList.add('callout', `callout-${type}`);
-					
 					firstP.innerHTML = textContent.replace(/^\[!\w+\].*?(\n|<br>|$)/, '');
 					
 					const titleEl = document.createElement('div');
 					titleEl.className = 'callout-title';
-					titleEl.innerText = title;
-					
+					titleEl.textContent = title;
+
+					if(btnHref){
+						const btnEl = document.createElement('a');
+						btnEl.className = 'callout-btn';
+						btnEl.href = btnHref;
+						btnEl.innerHTML = btnText;
+						titleEl.appendChild(btnEl);
+					}
+
 					bq.insertBefore(titleEl, bq.firstChild);
 				}
 			});
