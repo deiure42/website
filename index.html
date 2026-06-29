@@ -38,20 +38,21 @@
 	<link rel="stylesheet" href="assets/css/root.css">
 	<link rel="stylesheet" href="assets/css/index.css">
 	<script src="assets/js/theme.js" defer></script>
+	<script src="assets/js/parallax.js" defer></script>
 </head>
 <body>
 	<button class="theme-toggle" id="themeToggle" title="Přepnout světlý/tmavý režim">🌙</button>
 
-	<header class="landing-container">
-		<h1>Web...</h1>
-		<h3>Náhodný faktík</h3>
-		<p>Všechny zdroje světla v počítačových hrách jsou poháněny elektřinou.</p>
+	<header class="landing-container bg-body">
+		<div class="depth-element">
+			<h1>Web...</h1>
+			<h3>Náhodný faktík</h3>
+			<p id="random-fact">Všechny zdroje světla v počítačových hrách jsou poháněny elektřinou.</p>
 
-
-
-		<div class="article-links">
-			<a href="#clanky" class="btn">Články a texty</a>
-			<a href="#hry" class="btn">Webové hry</a>
+			<div class="article-links">
+				<a href="#clanky" class="btn">Články a texty</a>
+				<a href="#hry" class="btn">Webové hry</a>
+			</div>
 		</div>
 	</header>
 
@@ -66,7 +67,7 @@
 	</div>
 
 	<section id="clanky" class="content-section bg-content">
-		<div class="section-inner">
+		<div class="section-inner depth-element">
 			<h2>Články a texty</h2>
 			<p>Web je zatím na svém vlastním počátku a obsahuje tři skupiny textů:</p>
 			<a href="markdown-viewer.html?file=Filosofie" class="btn">O filosofii</a>
@@ -86,10 +87,29 @@
 	</div>
 
 	<section id="hry" class="content-section bg-body">
-		<div class="section-inner">
+		<div class="section-inner depth-element">
 			<h2>Webové hry</h2>
 			<a href="game.html?game=tetris" class="btn">Tetris</a>
 		</div>
 	</section>
+
+<script>
+	const fakty = [
+		"Všechny zdroje světla v počítačových hrách jsou poháněny elektřinou.",
+		"První počítačová myš byla vyrobena ze dřeva.",
+		"Programování původně vymyslela žena, Ada Lovelace.",
+		"Pokud bys složil kousek papíru 42krát, dosáhl by až na Měsíc.",
+		"První webová stránka na světě (info.cern.ch) z roku 1991 stále funguje.",
+		"Nintendo bylo založeno už v roce 1889. Původně vyrábělo hrací karty."
+	];
+	function zobrazNahodnyFakt() {
+		const nahodnyIndex = Math.floor(Math.random() * fakty.length);
+		const vybranyFakt = fakty[nahodnyIndex];
+		
+		document.getElementById('random-fact').textContent = vybranyFakt;
+	}
+	zobrazNahodnyFakt();
+</script>
+
 </body>
 </html>
