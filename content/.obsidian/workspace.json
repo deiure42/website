@@ -26,17 +26,17 @@
         "dimension": 74.0482233502538,
         "children": [
           {
-            "id": "90bb2b4fb75beb5b",
+            "id": "755dac7af5b796bf",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Baterie.md",
-                "mode": "preview",
+                "file": "Nabíječky.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Baterie"
+              "title": "Nabíječky"
             }
           },
           {
@@ -45,12 +45,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Myslím, tedy jsem.md",
-                "mode": "preview",
+                "file": "Baterie.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Myslím, tedy jsem"
+              "title": "Baterie"
             }
           },
           {
@@ -229,14 +229,15 @@
       "bases:Create new base": false
     }
   },
-  "active": "90bb2b4fb75beb5b",
+  "active": "755dac7af5b796bf",
   "lastOpenFiles": [
-    "Simpsonův paradox.md",
-    "Fenomény.md",
-    "Myslím, tedy jsem.md",
-    "Praxe.md",
-    "Filosofie.md",
     "Baterie.md",
+    "Nabíječky.md",
+    "Myslím, tedy jsem.md",
+    "Fenomény.md",
+    "Praxe.md",
+    "Simpsonův paradox.md",
+    "Filosofie.md",
     "Do života.md",
     "Toulky filosofií.md",
     "As long as they keep away from me.md",
